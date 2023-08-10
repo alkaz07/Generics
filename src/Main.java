@@ -5,7 +5,7 @@ public class Main {
 
      //   exemple1();
      //   exemple3();
-        exemple6();
+        exemple7();
     }
 
     private static void exemple5() {
@@ -25,7 +25,7 @@ public class Main {
         System.out.println(aSet); //порядок элементов непредсказуемый
     }
 
-    private static void exemple6() {
+    private static void exemple6() { //оставим неработающий пример
         //пользователь введет много РАЗНЫХ A, а мы их посмотрим
         Scanner scanner = new Scanner(System.in);
         int n=10;
@@ -34,9 +34,26 @@ public class Main {
         for (int i = 0; i < n; i++) {
             int x = scanner.nextInt();
             A a = new A(x);
-            aSet.add(a);  //Необходимо уметь СРАВНИВАТЬ объекты
+            aSet.add(a);  //Необходимо уметь СРАВНИВАТЬ объекты, а если нет - то не будет и дерева
         }
         System.out.println("количество разных A: "+aSet.size());  //столько, сколько объектов с разным содержимым,
+        //потому что мы переопределили equals()
+
+        System.out.println(aSet); //порядок элементов непредсказуемый
+    }
+
+    private static void exemple7() {
+        //пользователь введет много РАЗНЫХ AComp, а мы их посмотрим
+        Scanner scanner = new Scanner(System.in);
+        int n=10;
+        Set<AComp> aSet = new TreeSet<>();
+        System.out.println("введите "+n+" AComp");
+        for (int i = 0; i < n; i++) {
+            int x = scanner.nextInt();
+            AComp a = new AComp(x);
+            aSet.add(a);  //Необходимо уметь СРАВНИВАТЬ объекты, а если нет - то не будет и дерева
+        }
+        System.out.println("количество разных AComp: "+aSet.size());  //столько, сколько объектов с разным содержимым,
         //потому что мы переопределили equals()
 
         System.out.println(aSet); //порядок элементов непредсказуемый
@@ -161,7 +178,7 @@ class A{
         return Objects.hash(value);
     }
 
-   
+
 }
 
 class B{
